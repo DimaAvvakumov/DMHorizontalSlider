@@ -1,0 +1,4 @@
+DMHorizontalSlider
+==================
+
+Simple horizontal slider
