@@ -92,6 +92,18 @@
     return _scrollView.contentInset;
 }
 
+- (void) setContentOffset: (CGPoint) offset {
+    [_scrollView setContentOffset:offset];
+}
+
+- (void) setContentOffset: (CGPoint) offset animated:(BOOL)animated {
+    [_scrollView setContentOffset:offset animated:animated];
+}
+
+- (CGPoint) contentOffset {
+    return _scrollView.contentOffset;
+}
+
 #pragma mark - Reload methods
 
 - (void) reset {

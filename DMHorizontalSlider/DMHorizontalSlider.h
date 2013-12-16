@@ -25,6 +25,9 @@
 #pragma mark - Inset methods
 - (void) setContentInset: (UIEdgeInsets) inset;
 - (UIEdgeInsets) contentInset;
+- (void) setContentOffset: (CGPoint) offset;
+- (void) setContentOffset: (CGPoint) offset animated:(BOOL)animated;
+- (CGPoint) contentOffset;
 
 #pragma mark - Reload methods
 - (void) reloadData;
