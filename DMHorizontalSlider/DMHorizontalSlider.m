@@ -58,6 +58,7 @@
     _scrollView.backgroundColor = [UIColor clearColor];
     [_scrollView setShowsHorizontalScrollIndicator: YES];
     [_scrollView setShowsVerticalScrollIndicator: NO];
+    // [_scrollView setClipsToBounds:NO];
     [self addSubview: _scrollView];
     
     // init
@@ -139,9 +140,10 @@
 - (void) updateSlider {
     if (_delegate == nil) return;
     
-    float offset = _scrollView.contentOffset.x + _scrollView.contentInset.left;
+    // float offset = _scrollView.contentOffset.x + _scrollView.contentInset.left;
+    float offset = _scrollView.contentOffset.x;
     
-    if (offset < 0.0) return;
+    if (offset < - _scrollView.contentInset.left) return;
     if (offset > _maxOffset) return;
     
     if (offset > _minOffsetForChange && offset < _maxOffsetForChange) return;

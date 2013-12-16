@@ -31,6 +31,7 @@
     NSString *identifier = @"myIdentifier";
     // [_sliderView registerClass:[SliderCellView class] forCellReuseIdentifier:identifier];
     [_sliderView registerNib:[UINib nibWithNibName:@"SliderNibCellView" bundle:nil] forCellReuseIdentifier:identifier];
+    [_sliderView setContentInset:UIEdgeInsetsMake(0.0, 50.0, 0.0, 50.0)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,7 +48,7 @@
 #pragma mark - DMHorizontalSliderDataSource
 
 - (NSInteger) numberOfColumnsInHorizontalSlider:(DMHorizontalSlider *)sliderView {
-    return 100.0;
+    return 10;
 }
 
 - (float) horizontalSlider:(DMHorizontalSlider *)sliderView widthAtColumn:(NSInteger)column {
