@@ -18,9 +18,13 @@
     return nil;
 }
 
-//- (id)initWithCoder:(NSCoder *)aDecoder {
-//    return nil;
-//}
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initView];
+    }
+    return self;
+}
 
 - (id) initWithReuseIdentifier:(NSString *)identifier {
     self = [super initWithFrame: CGRectMake(0.0, 0.0, 300.0, 300.0)];

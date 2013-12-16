@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSString *identifier;
 
 - (id) initWithReuseIdentifier: (NSString *) identifier;
+- (void) initView;
 
 @end
