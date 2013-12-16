@@ -23,6 +23,8 @@
 @property (strong, nonatomic) NSMutableDictionary *lastVisibleCells;
 @property (strong, nonatomic) NSMutableDictionary *dequeuePool;
 
+@property (strong, nonatomic) NSMutableDictionary *registerClassesByIdentifier;
+
 @end
 
 @implementation DMHorizontalSlider
@@ -45,7 +47,7 @@
 
 - (void) initView {
     // add observer
-    [self addObserver:self forKeyPath:@"delegate" options:NSKeyValueObservingOptionNew context:nil];
+    // [self addObserver:self forKeyPath:@"delegate" options:NSKeyValueObservingOptionNew context:nil];
     
     // add scroll view
     CGRect scrollFrame = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
@@ -62,6 +64,7 @@
     
     self.lastVisibleCells = [NSMutableDictionary dictionaryWithCapacity:5];
     self.dequeuePool = [NSMutableDictionary dictionaryWithCapacity:1];
+    self.registerClassesByIdentifier = [NSMutableDictionary dictionaryWithCapacity:1];
     self.minOffsetForChange = 0.0;
     self.maxOffsetForChange = 0.0;
 }
@@ -70,11 +73,11 @@
     [self removeObserver:self forKeyPath:@"delegate"];
 }
 
-- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"delegate"]) {
-        [self reloadData];
-    }
-}
+//- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+//    if ([keyPath isEqualToString:@"delegate"]) {
+//        [self reloadData];
+//    }
+//}
 
 #pragma mark - Inset methods
 
@@ -227,13 +230,27 @@
     [_lastVisibleCells removeObjectForKey:cellKey];
 }
 
+- (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier {
+    NSString *className = NSStringFromClass(cellClass);
+    [_registerClassesByIdentifier setObject:className forKey:identifier];
+}
+
 - (DMHorizontalSliderCell *) dequeueReusableCellWithIdentifier: (NSString *) identifier {
-    NSMutableArray *cellList = [_dequeuePool objectForKey:identifier];
-    if (cellList == nil) return nil;
-    if ([cellList count] == 0) return nil;
+    DMHorizontalSliderCell *cell = nil;
     
-    DMHorizontalSliderCell *cell = [cellList lastObject];
-    [cellList removeLastObject];
+    NSMutableArray *cellList = [_dequeuePool objectForKey:identifier];
+    if (cellList && [cellList count] > 0) {
+        cell = [cellList lastObject];
+        [cellList removeLastObject];
+    }
+    
+    if (cell == nil) {
+        NSString *className = [_registerClassesByIdentifier objectForKey:identifier];
+        if (className) {
+            Class cls = NSClassFromString(className);
+            cell = [[cls alloc] initWithReuseIdentifier: identifier];
+        }
+    }
     
     return cell;
 }
@@ -242,6 +259,12 @@
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
     [self updateSlider];
+}
+
+#pragma mark - Draw circle
+
+- (void) drawRect:(CGRect)rect {
+    [self reloadData];
 }
 
 @end

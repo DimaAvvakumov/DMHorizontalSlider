@@ -17,8 +17,7 @@
 
 @implementation ViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -26,14 +25,14 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    NSString *identifier = @"myIdentifier";
+    [_sliderView registerClass:[SliderCellView class] forCellReuseIdentifier:identifier];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -58,9 +57,6 @@
     
     NSString *identifier = @"myIdentifier";
     SliderCellView *cell = (SliderCellView *) [sliderView dequeueReusableCellWithIdentifier: identifier];
-    if (cell == nil) {
-        cell = [[SliderCellView alloc] initWithReuseIdentifier:identifier];
-    }
     [cell setTitle: [NSString stringWithFormat:@"Column - %d", column]];
     
     return cell;
