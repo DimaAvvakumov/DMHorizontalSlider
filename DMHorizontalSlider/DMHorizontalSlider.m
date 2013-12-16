@@ -269,10 +269,6 @@
         UINib *nib = [_registerNibFilesByIdentifier objectForKey:identifier];
         if (nib) {
             cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
-            
-            NSString *ss = cell.identifier;
-            
-            NSLog(@"dd: %@", ss);
         }
     }
     
