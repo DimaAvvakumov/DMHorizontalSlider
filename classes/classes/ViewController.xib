@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
+                <outlet property="sliderView" destination="Nat-Tp-9zk" id="Gvr-US-Ph7"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>

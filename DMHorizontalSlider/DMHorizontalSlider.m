@@ -90,6 +90,8 @@
 
 - (void) reset {
     self.countItems = 0;
+    
+    [self removeAllVisibleCells];
 }
 
 - (void) reloadData {
@@ -119,6 +121,14 @@
     self.maxOffsetForChange = 0.0;
     
     [self updateSlider];
+}
+
+- (void) removeAllVisibleCells {
+    // remove old cells
+    NSArray *visibleKeys = [_lastVisibleCells allKeys];
+    for (NSString *cellKey in visibleKeys) {
+        [self putCellToDequeue: cellKey];
+    }
 }
 
 - (void) updateSlider {

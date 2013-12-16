@@ -10,6 +10,9 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet DMHorizontalSlider *sliderView;
+
+
 @end
 
 @implementation ViewController
@@ -33,6 +36,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    [_sliderView reloadData];
+    
 }
 
 #pragma mark - DMHorizontalSliderDataSource
