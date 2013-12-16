@@ -31,6 +31,7 @@
 
 #pragma mark - Dequeue methods
 - (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier;
+- (void)registerNib:(UINib *)nib forCellReuseIdentifier:(NSString *)identifier;
 - (DMHorizontalSliderCell *) dequeueReusableCellWithIdentifier: (NSString *) identifier;
 
 @end

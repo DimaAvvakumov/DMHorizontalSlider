@@ -10,8 +10,8 @@
 
 @interface DMHorizontalSliderCell : UIView
 
-- (id) initWithReuseIdentifier: (NSString *) identifier;
+@property (strong, nonatomic) NSString *identifier;
 
-- (NSString *) identifier;
+- (id) initWithReuseIdentifier: (NSString *) identifier;
 
 @end

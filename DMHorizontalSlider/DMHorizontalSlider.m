@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSMutableDictionary *dequeuePool;
 
 @property (strong, nonatomic) NSMutableDictionary *registerClassesByIdentifier;
+@property (strong, nonatomic) NSMutableDictionary *registerNibFilesByIdentifier;
 
 @end
 
@@ -64,7 +65,8 @@
     
     self.lastVisibleCells = [NSMutableDictionary dictionaryWithCapacity:5];
     self.dequeuePool = [NSMutableDictionary dictionaryWithCapacity:1];
-    self.registerClassesByIdentifier = [NSMutableDictionary dictionaryWithCapacity:1];
+    self.registerClassesByIdentifier = nil;
+    self.registerNibFilesByIdentifier = nil;
     self.minOffsetForChange = 0.0;
     self.maxOffsetForChange = 0.0;
 }
@@ -231,8 +233,20 @@
 }
 
 - (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier {
+    if (_registerClassesByIdentifier == nil) {
+        self.registerClassesByIdentifier = [NSMutableDictionary dictionaryWithCapacity:1];
+    }
+    
     NSString *className = NSStringFromClass(cellClass);
     [_registerClassesByIdentifier setObject:className forKey:identifier];
+}
+
+- (void)registerNib:(UINib *)nib forCellReuseIdentifier:(NSString *)identifier {
+    if (_registerNibFilesByIdentifier == nil) {
+        self.registerNibFilesByIdentifier = [NSMutableDictionary dictionaryWithCapacity:1];
+    }
+
+    [_registerNibFilesByIdentifier setObject:nib forKey:identifier];
 }
 
 - (DMHorizontalSliderCell *) dequeueReusableCellWithIdentifier: (NSString *) identifier {
@@ -244,11 +258,21 @@
         [cellList removeLastObject];
     }
     
-    if (cell == nil) {
+    if (cell == nil && _registerClassesByIdentifier) {
         NSString *className = [_registerClassesByIdentifier objectForKey:identifier];
         if (className) {
             Class cls = NSClassFromString(className);
             cell = [[cls alloc] initWithReuseIdentifier: identifier];
+        }
+    }
+    if (cell == nil && _registerNibFilesByIdentifier) {
+        UINib *nib = [_registerNibFilesByIdentifier objectForKey:identifier];
+        if (nib) {
+            cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+            
+            NSString *ss = cell.identifier;
+            
+            NSLog(@"dd: %@", ss);
         }
     }
     

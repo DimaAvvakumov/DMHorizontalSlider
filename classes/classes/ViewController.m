@@ -29,7 +29,8 @@
     [super viewDidLoad];
     
     NSString *identifier = @"myIdentifier";
-    [_sliderView registerClass:[SliderCellView class] forCellReuseIdentifier:identifier];
+    // [_sliderView registerClass:[SliderCellView class] forCellReuseIdentifier:identifier];
+    [_sliderView registerNib:[UINib nibWithNibName:@"SliderNibCellView" bundle:nil] forCellReuseIdentifier:identifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,10 +56,14 @@
 
 - (DMHorizontalSliderCell *) horizontalSlider:(DMHorizontalSlider *)sliderView cellForColumn:(NSInteger)column {
     
-    NSString *identifier = @"myIdentifier";
-    SliderCellView *cell = (SliderCellView *) [sliderView dequeueReusableCellWithIdentifier: identifier];
-    [cell setTitle: [NSString stringWithFormat:@"Column - %d", column]];
+//    NSString *identifier = @"myIdentifier";
+//    SliderCellView *cell = (SliderCellView *) [sliderView dequeueReusableCellWithIdentifier: identifier];
+//    [cell setTitle: [NSString stringWithFormat:@"Column - %d", column]];
     
+    NSString *identifier = @"myIdentifier";
+    SliderNibCellView *cell = (SliderNibCellView *) [sliderView dequeueReusableCellWithIdentifier: identifier];
+    [cell.titleLabel setText:[NSString stringWithFormat:@"Column - %d", column]];
+
     return cell;
 }
 

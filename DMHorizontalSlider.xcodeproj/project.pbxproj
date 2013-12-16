@@ -36,6 +36,10 @@
 		18274963185CC6FD006C56CF /* SliderCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18274961185CC6FD006C56CF /* SliderCellView.m */; };
 		18274965185CC70E006C56CF /* SliderCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18274964185CC70E006C56CF /* SliderCellView.xib */; };
 		18274966185CC70E006C56CF /* SliderCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18274964185CC70E006C56CF /* SliderCellView.xib */; };
+		1827498A185EDC3A006C56CF /* SliderNibCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18274989185EDC3A006C56CF /* SliderNibCellView.m */; };
+		1827498B185EDC3A006C56CF /* SliderNibCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18274989185EDC3A006C56CF /* SliderNibCellView.m */; };
+		1827498D185EDC45006C56CF /* SliderNibCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1827498C185EDC45006C56CF /* SliderNibCellView.xib */; };
+		1827498E185EDC45006C56CF /* SliderNibCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1827498C185EDC45006C56CF /* SliderNibCellView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,9 @@
 		18274960185CC6FD006C56CF /* SliderCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderCellView.h; sourceTree = "<group>"; };
 		18274961185CC6FD006C56CF /* SliderCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderCellView.m; sourceTree = "<group>"; };
 		18274964185CC70E006C56CF /* SliderCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCellView.xib; sourceTree = "<group>"; };
+		18274988185EDC3A006C56CF /* SliderNibCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SliderNibCellView.h; path = ../../../../DMHorizontalSlider1/classes/classes/Cell/SliderNibCellView.h; sourceTree = "<group>"; };
+		18274989185EDC3A006C56CF /* SliderNibCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SliderNibCellView.m; path = ../../../../DMHorizontalSlider1/classes/classes/Cell/SliderNibCellView.m; sourceTree = "<group>"; };
+		1827498C185EDC45006C56CF /* SliderNibCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SliderNibCellView.xib; path = ../../../../DMHorizontalSlider1/classes/classes/Cell/SliderNibCellView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +216,9 @@
 				18274960185CC6FD006C56CF /* SliderCellView.h */,
 				18274961185CC6FD006C56CF /* SliderCellView.m */,
 				18274964185CC70E006C56CF /* SliderCellView.xib */,
+				18274988185EDC3A006C56CF /* SliderNibCellView.h */,
+				18274989185EDC3A006C56CF /* SliderNibCellView.m */,
+				1827498C185EDC45006C56CF /* SliderNibCellView.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -289,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1827494B185CC1D8006C56CF /* InfoPlist.strings in Resources */,
+				1827498D185EDC45006C56CF /* SliderNibCellView.xib in Resources */,
 				18274965185CC70E006C56CF /* SliderCellView.xib in Resources */,
 				18274954185CC1F9006C56CF /* ViewController.xib in Resources */,
 				18274947185CC1D8006C56CF /* Images.xcassets in Resources */,
@@ -305,6 +316,7 @@
 				1827494C185CC1D8006C56CF /* InfoPlist.strings in Resources */,
 				1827492E185CC0FE006C56CF /* InfoPlist.strings in Resources */,
 				18274948185CC1D8006C56CF /* Images.xcassets in Resources */,
+				1827498E185EDC45006C56CF /* SliderNibCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18274952185CC1F9006C56CF /* ViewController.m in Sources */,
+				1827498A185EDC3A006C56CF /* SliderNibCellView.m in Sources */,
 				18274962185CC6FD006C56CF /* SliderCellView.m in Sources */,
 				1827495D185CC231006C56CF /* DMHorizontalSliderCell.m in Sources */,
 				1827495B185CC231006C56CF /* DMHorizontalSlider.m in Sources */,
@@ -333,6 +346,7 @@
 				18274946185CC1D8006C56CF /* AppDelegate.m in Sources */,
 				1827494E185CC1D8006C56CF /* main.m in Sources */,
 				18274953185CC1F9006C56CF /* ViewController.m in Sources */,
+				1827498B185EDC3A006C56CF /* SliderNibCellView.m in Sources */,
 				18274930185CC0FE006C56CF /* DMHorizontalSliderTests.m in Sources */,
 				1827495E185CC231006C56CF /* DMHorizontalSliderCell.m in Sources */,
 			);

@@ -10,8 +10,6 @@
 
 @interface DMHorizontalSliderCell()
 
-@property (strong, nonatomic) NSString *cellIdentifier;
-
 @end
 
 @implementation DMHorizontalSliderCell
@@ -20,26 +18,22 @@
     return nil;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    return nil;
-}
+//- (id)initWithCoder:(NSCoder *)aDecoder {
+//    return nil;
+//}
 
 - (id) initWithReuseIdentifier:(NSString *)identifier {
     self = [super initWithFrame: CGRectMake(0.0, 0.0, 300.0, 300.0)];
     if (self) {
         [self initView];
         
-        self.cellIdentifier = identifier;
+        self.identifier = identifier;
     }
     return self;
 }
 
 - (void) initView {
     
-}
-
-- (NSString *) identifier {
-    return _cellIdentifier;
 }
 
 @end

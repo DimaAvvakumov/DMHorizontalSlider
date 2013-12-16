@@ -10,6 +10,7 @@
 
 #import "DMHorizontalSlider.h"
 #import "SliderCellView.h"
+#import "SliderNibCellView.h"
 
 @interface ViewController : UIViewController <DMHorizontalSliderDelegate>
 
