@@ -48,7 +48,10 @@
 - (DMHorizontalSliderCell *) horizontalSlider:(DMHorizontalSlider *)sliderView cellForColumn:(NSInteger)column {
     
     NSString *identifier = @"myIdentifier";
-    SliderCellView *cell = [[SliderCellView alloc] initWithReuseIdentifier:identifier];
+    SliderCellView *cell = (SliderCellView *) [sliderView dequeueReusableCellWithIdentifier: identifier];
+    if (cell == nil) {
+        cell = [[SliderCellView alloc] initWithReuseIdentifier:identifier];
+    }
     [cell setTitle: [NSString stringWithFormat:@"Column - %d", column]];
     
     return cell;

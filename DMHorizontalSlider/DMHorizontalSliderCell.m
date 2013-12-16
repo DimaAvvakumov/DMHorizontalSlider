@@ -8,6 +8,12 @@
 
 #import "DMHorizontalSliderCell.h"
 
+@interface DMHorizontalSliderCell()
+
+@property (strong, nonatomic) NSString *cellIdentifier;
+
+@end
+
 @implementation DMHorizontalSliderCell
 
 - (id)initWithFrame:(CGRect)frame {
@@ -22,12 +28,18 @@
     self = [super initWithFrame: CGRectMake(0.0, 0.0, 300.0, 300.0)];
     if (self) {
         [self initView];
+        
+        self.cellIdentifier = identifier;
     }
     return self;
 }
 
 - (void) initView {
     
+}
+
+- (NSString *) identifier {
+    return _cellIdentifier;
 }
 
 @end

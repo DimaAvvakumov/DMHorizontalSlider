@@ -154,30 +154,9 @@
         NSInteger cellIndex = [cellKey integerValue];
         
         if (cellIndex < firstVisibleColumn || cellIndex > lastVisibleColumn) {
-            UIView *v = [_lastVisibleCells objectForKey:cellKey];
-            [v removeFromSuperview];
-            
-            [_lastVisibleCells removeObjectForKey:cellKey];
+            [self putCellToDequeue: cellKey];
         }
     }
-    
-//    NSMutableArray *removedCells = nil;
-//    for (NSString *cellKey in _lastVisibleCells) {
-//        NSInteger cellIndex = [cellKey integerValue];
-//        
-//        if (cellIndex < firstVisibleColumn || cellIndex > lastVisibleColumn) {
-//            removedCells = [NSMutableArray arrayWithCapacity: 3];
-//            [removedCells addObject: cellKey];
-//        }
-//    }
-//    if (removedCells) {
-//        for (NSString *cellKey in removedCells) {
-//            UIView *v = [_lastVisibleCells objectForKey:cellKey];
-//            [v removeFromSuperview];
-//            
-//            [_lastVisibleCells removeObjectForKey:cellKey];
-//        }
-//    }
     
     // add new cells
     for (int i = firstVisibleColumn; i <= lastVisibleColumn; i++) {
@@ -218,8 +197,35 @@
 
 #pragma mark - Dequeue methods
 
-- (void) dequeueReusableCellWithIdentifier: (NSString *) identifier {
+- (void) putCellToDequeue: (NSString *) cellKey {
+    // take cell view
+    DMHorizontalSliderCell *cell = [_lastVisibleCells objectForKey:cellKey];
     
+    // remove from scene
+    [cell removeFromSuperview];
+    
+    // put to pool
+    NSString *identifier = cell.identifier;
+    NSMutableArray *cellList = [_dequeuePool objectForKey:identifier];
+    if (cellList == nil) {
+        cellList = [NSMutableArray arrayWithCapacity: 5];
+        [_dequeuePool setObject:cellList forKey:identifier];
+    }
+    [cellList addObject:cell];
+    
+    // remove from visible list
+    [_lastVisibleCells removeObjectForKey:cellKey];
+}
+
+- (DMHorizontalSliderCell *) dequeueReusableCellWithIdentifier: (NSString *) identifier {
+    NSMutableArray *cellList = [_dequeuePool objectForKey:identifier];
+    if (cellList == nil) return nil;
+    if ([cellList count] == 0) return nil;
+    
+    DMHorizontalSliderCell *cell = [cellList lastObject];
+    [cellList removeLastObject];
+    
+    return cell;
 }
 
 #pragma mark - UIScrollViewDelegate

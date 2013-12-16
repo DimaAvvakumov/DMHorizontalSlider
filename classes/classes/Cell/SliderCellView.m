@@ -18,6 +18,7 @@
 
 - (id)initWithReuseIdentifier:(NSString *)identifier {
     self = [super initWithReuseIdentifier:identifier];
+    
     if (self) {
         // bind views
         UIView *mainView = [[[NSBundle mainBundle] loadNibNamed:@"SliderCellView" owner:self options:nil] objectAtIndex:0];

@@ -30,6 +30,6 @@
 - (void) reloadData;
 
 #pragma mark - Dequeue methods
-- (void) dequeueReusableCellWithIdentifier: (NSString *) identifier;
+- (DMHorizontalSliderCell *) dequeueReusableCellWithIdentifier: (NSString *) identifier;
 
 @end

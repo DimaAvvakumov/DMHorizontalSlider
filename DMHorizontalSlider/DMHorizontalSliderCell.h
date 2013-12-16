@@ -12,4 +12,6 @@
 
 - (id) initWithReuseIdentifier: (NSString *) identifier;
 
+- (NSString *) identifier;
+
 @end
